@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import LoginPage from "./pages/Login";
-import HomePage from "./pages/Home";
+import { MainContent } from "./components";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [loginStatus, setLoginStatus] = useState(false);
@@ -24,10 +25,13 @@ function App() {
     <>
       <div className="container-fluid">
         {loginStatus ? (
-          <HomePage
-            loginStatus={loginStatus}
-            loginCbHandler={loginCbHandler}
-          ></HomePage>
+          <div>
+            <Navbar
+              loginStatus={loginStatus}
+              loginCbHandler={loginCbHandler}
+            ></Navbar>
+            <MainContent></MainContent>
+          </div>
         ) : (
           <LoginPage loginCbHandler={loginCbHandler}></LoginPage>
         )}

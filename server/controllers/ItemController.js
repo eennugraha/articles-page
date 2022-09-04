@@ -15,16 +15,18 @@ class ItemController {
 
   static async create(req, res) {
     try {
-      const { title, content, posting } = req.body;
+      const { title, content, posting, image } = req.body;
       const userId = +req.userData.id;
 
+      // console.log(req.body);
       let result = await item.create({
         title,
         content,
         posting,
+        image,
         userId,
       });
-
+      // console.log(result);
       res.status(201).json(result);
     } catch (err) {
       res.status(500).json(err);
