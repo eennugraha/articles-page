@@ -40,14 +40,12 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      // name: DataTypes.STRING,
-      // email: DataTypes.STRING,
-      // password: DataTypes.STRING,
       dateOfBirth: DataTypes.DATE,
       address: DataTypes.TEXT,
       education: DataTypes.TEXT,
       orgExp: DataTypes.TEXT,
       workExp: DataTypes.TEXT,
+      image: DataTypes.STRING,
     },
     {
       hooks: {
@@ -58,6 +56,7 @@ module.exports = (sequelize, DataTypes) => {
           user.education = user.education || "User's educations history";
           user.orgExp = user.orgExp || "User's organizational experiences";
           user.workExp = user.workExp || "User's work experiences";
+          user.image = user.image || "https://via.placeholder.com/150";
         },
       },
       sequelize,

@@ -31,12 +31,14 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       posting: DataTypes.INTEGER,
+      image: DataTypes.STRING,
       userId: DataTypes.INTEGER,
     },
     {
       hooks: {
         beforeCreate: function (item, option) {
           item.posting = item.posting || 0;
+          item.image = item.image || "https://via.placeholder.com/150";
         },
       },
       sequelize,

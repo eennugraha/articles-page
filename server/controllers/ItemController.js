@@ -64,7 +64,7 @@ class ItemController {
   static async getItemById(req, res) {
     try {
       const id = +req.params.id;
-      let result = await item.findByPk(id);
+      let result = await item.findByPk(id, { include: [user] });
       res.status(200).json(result);
     } catch (err) {
       res.status(404).json(err);
