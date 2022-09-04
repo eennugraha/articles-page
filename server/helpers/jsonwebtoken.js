@@ -2,16 +2,8 @@ const jwt = require("jsonwebtoken");
 const secretCode = process.env.SECRET_CODE || "bebas";
 
 const tokenGenerator = (data) => {
-  const {
-    id,
-    name,
-    email,
-    dateOfBirth,
-    address,
-    education,
-    organizationExp,
-    workExp,
-  } = data;
+  const { id, name, email, dateOfBirth, address, education, orgExp, workExp } =
+    data;
   return jwt.sign(
     {
       id,
@@ -20,7 +12,7 @@ const tokenGenerator = (data) => {
       dateOfBirth,
       address,
       education,
-      organizationExp,
+      orgExp,
       workExp,
     },
     secretCode

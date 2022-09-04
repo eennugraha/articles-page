@@ -1,9 +1,12 @@
-const { item } = require("../models");
+const { tokenVerifier } = require("../helpers/jsonwebtoken");
+const { item, user } = require("../models");
 
 class ItemController {
   static async getAllItems(req, res) {
     try {
-      let items = await item.findAll();
+      let items = await item.findAll({
+        include: [user],
+      });
       res.status(200).json(items);
     } catch (err) {
       res.status(500).json(err);
@@ -13,11 +16,15 @@ class ItemController {
   static async create(req, res) {
     try {
       const { title, content, posting } = req.body;
+      const userId = +req.userData.id;
+
       let result = await item.create({
         title,
         content,
         posting,
+        userId,
       });
+
       res.status(201).json(result);
     } catch (err) {
       res.status(500).json(err);

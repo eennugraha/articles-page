@@ -42,8 +42,8 @@ class UserController {
 
       if (userFound) {
         if (decryptPwd(password, userFound.password)) {
-          let accessToken = tokenGenerator(userFound);
-          res.status(200).json({ accessToken });
+          let access_token = tokenGenerator(userFound);
+          res.status(200).json({ access_token });
 
           // let verifyToken = tokenVerifier(accessToken);
           // console.log(verifyToken);

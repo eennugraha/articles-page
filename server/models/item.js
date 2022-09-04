@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      item.belongsTo(models.user);
     }
   }
   item.init(
@@ -30,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       posting: DataTypes.INTEGER,
+      userId: DataTypes.INTEGER,
     },
     {
       hooks: {

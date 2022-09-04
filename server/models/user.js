@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      user.hasMany(models.item);
     }
   }
   user.init(
@@ -39,10 +40,13 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      // name: DataTypes.STRING,
+      // email: DataTypes.STRING,
+      // password: DataTypes.STRING,
       dateOfBirth: DataTypes.DATE,
       address: DataTypes.TEXT,
       education: DataTypes.TEXT,
-      organizationExp: DataTypes.TEXT,
+      orgExp: DataTypes.TEXT,
       workExp: DataTypes.TEXT,
     },
     {
@@ -52,8 +56,7 @@ module.exports = (sequelize, DataTypes) => {
           user.dateOfBirth = user.dateOfBirth || "1900-01-01";
           user.address = user.address || "User's address";
           user.education = user.education || "User's educations history";
-          user.organizationExp =
-            user.organizationExp || "User's organizational experiences";
+          user.orgExp = user.orgExp || "User's organizational experiences";
           user.workExp = user.workExp || "User's work experiences";
         },
       },
